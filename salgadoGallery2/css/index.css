@@ -1,0 +1,457 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+
+html,body{
+margin:0;
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+background-color:#fafafa;
+}
+#bodyOverlay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  visibility: hidden;
+}
+#bodyWrapper{
+  width: 100%;
+  height: 100%;
+}
+header{
+width: 100%;
+height: 10%;
+background-color:white;
+/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+display: flex;
+flex-direction: row;
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+/* background-color: lightcoral; */
+}
+
+#topLeftMenu{
+  position: relative;
+  left: 0%;
+  width: 40%;
+  height: 100%;
+  /* border: 1px solid pink; */
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+}
+#headerText{
+  width: 80%;
+  height: 100%;
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: flex-end;
+}
+#headerText p{
+  text-transform:uppercase;
+  align-self:center;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  word-spacing: .3em;
+  position: relative;
+  right: 0;
+}
+#nameDiv{
+width:20%;
+height: 100%;
+/* border: 1px solid blue; */
+position: relative;
+align-self: flex-start;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+}
+#initial{
+color: white;
+background: dimgray;
+font-size: 2em;
+padding: .1em .3em .1em .3em;
+border: 1px solid dimgray;
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+#topRightMenu{
+  position: relative;
+  width: 60%;
+  height: 100%;
+  /* border: 1px solid brown; */
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  cursor: ;
+}
+#topRightMenuWrapper{
+width: 100%;
+height: 100%;
+align-self: flex-end;
+/* border: 1px solid pink; */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+#topRightUl{
+  list-style-type: none;
+  text-transform: uppercase;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  /* align-self: flex-end; */
+}
+#topRightUl li{
+  display: inline;
+  font-size: 1.2em;
+  padding-left: 1em;
+  cursor: pointer;
+  color: rgba(0,0,0,0.7);
+
+}
+input{
+  border: none;
+  background-color: rgba(0,0,0,0.2);
+  width: 10vw;
+  height: 5.2vh;
+  font-family: 'arial', sans-serif;
+  transition: width 0.4s linear;
+  font-size:.7em;
+  background-image: url("../icons/search.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-left: 3em;
+}
+input:focus{
+outline:none;
+width: 15vw;
+}
+/** modal */
+#modal{
+height: 70vh;
+position: absolute;
+left:13%;
+right:13%;
+top:21%;
+z-index: 3;
+display:none;
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+#modalWrapper{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+#modalImgDiv{
+width: 60%;
+height: 300%;
+background-repeat: no-repeat;
+/* background-position: center; */
+background-size: cover;
+display: flex;
+flex-direction: row;
+}
+#modalImages{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+#modalImg1,#modalImg2,#modalImg3{
+width:100%;
+height:100%;
+position:relative;
+}
+/* #modalImg1{background-color: pink;}
+#modalImg2{background-color: green;}
+#modalImg3{background-color: yellow;} */
+#modalDesc{
+  width: 40%;
+  /* height: 100%; */
+  background-color:#fafafa;
+  padding-left: 3em;
+  padding-right: 3em;
+  word-wrap: break-word;
+  overflow-y:hidden;
+  line-height: 1.5em;
+  font-family: arial;
+}
+/* The exit,previous,and next
+ buttons are positioned absolutely,
+ but also relative to modalWrapper
+
+ note the width of left,top,right
+ instead of margin-left,,margin-right.
+ This is because the image has the absolute
+ position property*/
+#exitButton{
+background-image:url("../icons/exit2.png");
+background-repeat: no-repeat;
+background-size: cover;
+width:2.5%;
+height:5%;
+position:absolute;
+left: 96%;/* 100%-width --> 100-3=97*/
+top:2%;
+}
+#prevNext{
+/* background-color:green; */
+width:30%;
+height:5%;
+position:absolute;
+left:62%; /* 100%-width --> 100-30=70%*/
+top:90%; /* 100%-height --> 100-5=95%*/
+font-family: arial narrow;
+text-transform: uppercase;
+font-size: .8em;
+}
+/**
+prevSpan,nextSpan,prevIcon,nextIcon are
+absolutely position
+but also relative to prevNext
+---------------------------------------
+prevNext has a width of 20% and contains 4 items
+*/
+#prevSpan{
+  position:absolute;
+  /* background-color:green; */
+  width:20%;
+  height: 100%;
+  left:30%;
+  text-align: center;
+  /* border-right:2px solid black; */
+}
+
+#nextSpan{
+  position:absolute;
+  /* background-color:orange; */
+  width:20%;
+  height: 100%;
+  left:50%;
+  text-align: center;
+}
+#prevIcon{
+  position:absolute;
+  /* background-color:yellow; */
+  width:8%;
+  height: 60%;
+  top:2%;
+  left:22%;
+  /* top:5%; */
+  background-image: url("../icons/prevIcon2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+#prevIcon:hover,#nextIcon:hover{
+  cursor: pointer;
+}
+#nextIcon{
+  position:absolute;
+  /* background-color:blue; */
+  width:8%;
+  height: 60%;
+  top:2%;
+  background-image: url("../icons/nextIcon2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  left:68%;
+}
+#exitButton{
+cursor:pointer;
+}
+
+main{
+  width: 100%;
+  height: 110%;
+}
+#beforeImagesWrapper{
+  margin-left: 5%;
+  margin-right: 5%;
+  height:10%;
+  /* border: 1px solid teal; */
+}
+#imagesWrapper{
+margin-left:5%;
+margin-right: 5%;
+height: 90%;
+/*border: 1px solid white;*/
+display: flex;
+flex-direction: column;
+}
+.row{
+  width: 100%;
+  height:100%;
+  display: flex;
+  /*flex-direction: row;*/
+}
+.imageBox{
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  /* border: 1px solid green; */
+  margin-left: 1.3em;
+  /*padding-top:1em;*/
+  margin-top: .8em;
+  display: flex;
+  /* border-radius:.2em; */
+  /* border-bottom:.2em solid white; */
+  padding:.3em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
+  overflow:hidden;
+  border:.06em solid white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 1.5s;
+}
+.imageBox:hover{
+  transform: scale3d(1.08,1.08,1.08);
+}
+
+/* .imageBox:hover, .imageBoxOverlay p:hover{
+  transform: scale3d(1.08,1.08,1.08);
+}
+.imageBoxOverlay p{
+  transition: all 1.5s;
+} */
+/* .#imageOne{
+  transition: width 2s;
+}
+#imageOne:hover{
+  transform: scale3d(1.2,1.2,1.2);
+} */
+.imageBox:hover{
+  /* transform: scale3d(1.2,1.2,1.2); */
+}
+.imageBoxOverlay{
+  width:100%;
+  height: 100%;
+  background-color:rgba(0,0,0,.5);
+  position:absolute;
+  left: 0px;
+  top:0px;
+  display:;
+  /* visibility:hidden; */
+  opacity:0;
+  transition: all 1s linear;
+  /* transition-delay:3s; */
+  color: white;
+}
+.imageBoxOverlay:hover{
+  opacity: ;
+  /* visibility: visible; */
+}
+.overlayWrapper{
+  width: 100%;
+  height: 100%;
+  max-width: 90%;
+  max-height: 90%;
+  color: white;
+  font-family: arial;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  opacity: 0;
+  transition: all .5s ease;
+  /* border: 2px solid white; */
+}
+.overlayWrapper:hover{
+  opacity: 1;
+}
+
+.imageBox img:hover{
+  /* transform: scale(1.5,1.5); */
+  /* transform: scale3d(1.2, 1.2, 1); */
+
+}
+.one{
+  background-image: url('../images/bosnia.jpg');
+
+}
+.two{
+  background-image: url('../images/cow.jpg');
+
+}
+.three{
+  background-image: url('../images/dinkaMan.jpeg');
+
+}
+.four{
+  background-image: url('../images/goldMine.jpg');
+
+}
+.five{
+  background-image: url('../images/himbaWoman.jpg');
+
+}
+.six{
+  background-image: url('../images/koremCamp.jpg');
+
+}
+.seven{
+  background-image: url('../images/penguinsDive.jpg');
+
+  }
+.eight{
+
+  background-image: url('../images/zebrasDrink.jpg');
+    }
+.nine{
+
+  background-image: url('../images/genesis.jpg');
+}
+.ten{
+  background-image: url('../images/penguinsDive.jpg');
+
+}
+.eleven{
+  background-image: url('../images/mexico1980.jpg');
+
+}
+.twelve{
+
+  background-image: url('../images/mexico1980Dog.jpg');
+}
+.thirteen{
+  background-image: url('../images/dinkaChild.jpg');
+
+}
+.fourteen{
+  background-image: url('../images/beautifulChild.jpg');
+
+}
+.fifteen{
+  background-image: url('../images/childWelfare.jpg');
+
+}
+
+.one, .six, .eleven{
+margin-left: 0em;
+}
+.row.first div{
+  margin-top: 0em;
+}
+footer{
+  height: 10%;
+  /* border: 1px solid pink; */
+  margin-top: 2em;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  font-family: arial;
+}
+footer p{
+  letter-spacing: .2em;
+}
